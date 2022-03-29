@@ -1,0 +1,33 @@
+<script>
+    f1 = function(x){ console.log(`f1:${x}`);};
+   // ƒ (x){console.log(`f1;${x}`;);}
+
+   f1('hey');
+// f1:hey
+f1(37);
+// f1:37
+
+//lets suppose we have another function f2
+f2 = function(y){ console.log(`f2:${y}`);};
+// ƒ (y){ console.log(`f2:${y}`);}
+
+/* 
+now f1 and f2 are referencces to functions.We can pass them into a function. So suppose i have a function f3 that takes functions as arguments.
+*/
+function f3(fa, fb) {fa('hello');};
+f3(f1, f2);
+// f1:hello
+
+function f4(fa, fb){ return {fa:fa, fb:fb};};
+f4;
+// ƒ f4(fa, fb){ return {fa:fa, fb:fb};}
+res = f4(f1,f2)
+// {fa: ƒ, fb: ƒ}
+res.fa('hello world')
+//f1:hello world
+res.fb('goodbye earthling')
+//f2:goodbye earthling
+
+/*ß
+so we can pass functions around very easily. We can put functions into onjects. So we can have objects having variables and functions in them quite easily.This is one of the nice things about JavaScript is it`s very easy to pass functions around. So we could have  a number of functions, for  example, passed into a function that might choose which one to fire, So it might fire left, or might fire right depending on some other state in that function.
+</script>
