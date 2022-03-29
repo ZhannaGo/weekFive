@@ -1,0 +1,51 @@
+<script>
+    /* 
+    This is a powerful pattern widely used in JavaScript.It is an anonymous function pattern. It is used in module creation. Lets take a look at the construct.
+    */
+    /*
+    So suppose we have an anonimous function like this but we enclose it in brackets. And then we cause it to be executed, so we add () at the end couses this function to execute.
+    */
+
+    (function(){
+        console.log('hey');
+    })()
+// hey
+
+/* 
+We will use this construct to partition our code. That functions defined inside here for example variables inside here only exist within thois function and inaccessible from outside unless they are possibly returned. And that is what we going to see in the module pattern.
+*/
+(function(){
+    //variables declared inside
+    // are hidden
+})()
+
+var Module = (function(){
+    return{
+        publicMethod : ()=>{console.log('Hey')}
+    }
+})()
+// undefined
+Module.publicMethod()
+// Hey
+
+
+/*
+lets expand on this method.
+*/
+var Module = (function(){
+    var _privateHey = 'Hey';
+    function _privateMethod (){
+        console.log(_privateHey);
+    }
+    return {
+        publicMethod : function(){_privateMethod();}
+    }
+})()
+//undefined
+Module.publicMethod()
+//Hey
+
+/*
+this kind of modular structure is important in a sence we can control our variables so other code can`t access them. and actually we will not polute our codes. So we have very clean interface if you like. We are defining an application program interface to our module.
+*/
+</script>
